@@ -6,6 +6,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 
 import backgroundImage from "../../assets/img/logo.png";
@@ -19,9 +20,17 @@ export default class Auth extends Component {
     confirmePassword: "",
     stageNew: true,
   };
+
+  signinOrSignup = () => {
+    if (this.state.stageNew) {
+      Alert.alert("Sucesso!", "Criar conta");
+    } else {
+      Alert.alert("Sucesso!", "Logar");
+    }
+  };
   render() {
     return (
-      <ImageBackground source={backgroundImage} style={styles.background}>
+      <ImageBackground style={styles.background}>
         <Text style={styles.title}>Ampix Sistemas</Text>
         <View style={styles.formContainer}>
           <Text style={styles.subtitle}>
@@ -59,7 +68,7 @@ export default class Auth extends Component {
               }
             />
           )}
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.signinOrSignup}>
             <View style={styles.button}>
               <Text style={styles.buttonText}>
                 {this.state.stageNew ? "Registrar" : "Entrar"}
@@ -67,6 +76,16 @@ export default class Auth extends Component {
             </View>
           </TouchableOpacity>
         </View>
+        <TouchableOpacity
+          style={{ padding: 10 }}
+          onPress={() => this.setState({ stageNew: !this.state.stageNew })}
+        >
+          <Text style={styles.buttonText}>
+            {this.state.stageNew
+              ? "Já possui conta?"
+              : "Ainda não possui conta ?"}
+          </Text>
+        </TouchableOpacity>
       </ImageBackground>
     );
   }
@@ -74,6 +93,7 @@ export default class Auth extends Component {
 
 const styles = StyleSheet.create({
   background: {
+    backgroundColor: "#AAA",
     alignItems: "center",
     justifyContent: "center",
   },
