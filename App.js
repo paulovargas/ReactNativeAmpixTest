@@ -1,20 +1,31 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import Auth from "./src/screens/Auth";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <Auth />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+/**
+ 
+ const styles = StyleSheet.create({
+   container: {
+     flex: 1,
+     backgroundColor: "#fff",
+     alignItems: "center",
+     justifyContent: "center",
+   },
+ });
+ * 
+ * 
+ * @format
+ *
+
+import { AppRegistry } from "react-native";
+import Auth from "./src/screens/Auth";
+import { name as appName } from "./app.json";
+
+AppRegistry.registerComponent(appName, () => Auth);
+
+ * 
+ */
